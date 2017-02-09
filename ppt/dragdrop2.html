@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>dragdrop2</title>
+<style type="text/css">
+    .testDropTarget{
+        height:300px;
+        width: 300px;
+        border:1px dashed black;
+        position: relative;top: 20px;
+    }
+
+    .cc111{
+        width: 500px;
+        height: 350px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -250px;
+        margin-top: -175px;
+    }
+</style>
+<script type="text/javascript">
+
+window.onload = function(){
+
+    var $ = function(id){
+        return document.getElementById(id);
+    };
+    var addEvent = (function() {
+        if(document.addEventListener) {
+            return function(el, type, fn) {
+                if(el && el.nodeName || el === window) {
+                    el.addEventListener(type, fn, false);
+                } else if (el && el.length) {
+                    for(var i = 0; i < el.length; i++) {
+                        addEvent(el[i], type, fn);
+                    }
+                }
+            };
+        } else {
+            return function(el, type, fn) {
+                if(el && el.nodeName || el === window) {
+                    el.attachEvent('on' + type, function() {
+                        return fn.call(el, window.event);
+                    });
+                } else if (el && el.length) {
+                    for(var i = 0; i < el.length; i++) {
+                        addEvent(el[i], type, fn);
+                    }
+                }
+            };
+        }
+    })();
+
+    var isImage = function(type){
+        switch (type) {
+            case 'image/jpeg':
+            case 'image/png':
+            case 'image/gif':
+            case 'image/bmp':
+            case 'image/jpg':
+                return true;
+            default:
+                return false;
+        }
+    };
+
+    addEvent($('testDropTarget'), 'drop', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        console.warn(e.dataTransfer.files);
+        console.warn(e.dataTransfer.types);
+
+        if (e.dataTransfer.files.length) {
+            var files = e.dataTransfer.files;
+            var src, fileName;
+            for (var i = 0, f; f = files[i]; i++) {
+                var t = f.type ? f.type : 'n/a',
+                    reader, isImg = isImage(t), img,
+                    looks = function(img){
+                        $('testDropTarget').innerHTML = img;
+                    };
+                if (isImg) {
+                    reader = new FileReader();
+                    reader.onload = (function(theFile){
+                        return function(e){
+                            src = e.target.result, fileName = theFile.name;
+                            img = '<img src="'+ src +'" title="'+ fileName +'" style="height: 300px; width: 300px;">';
+                            looks(img);
+                        };
+                    })(f)
+                    reader.readAsDataURL(f);
+                }else {
+                    img = '"传进来的不是图片！';
+                    looks(f, img);
+                }
+            }
+        }
+
+    });
+
+    addEvent($('testDropTarget'), 'dragover', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
+    addEvent($('testDropTarget'), 'dragenter', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    });
+}
+</script>
+</head>
+<body>
+<div class="cc111">
+<div class="testDropTarget" id="testDropTarget"></div>
+</div>
+</body>
+</html>

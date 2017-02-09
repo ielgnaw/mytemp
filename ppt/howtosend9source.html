@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+    <head>
+        <title>pptx-new</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link type="text/css" rel="stylesheet" href="shCoreDefault.css"/>
+        <style type="text/css" media="screen">
+            body {
+                line-height: 1;
+                overflow:hidden;
+
+                font: 14px/1.5em "Microsoft Yahei",Arial,sans-serif;
+                min-height: 740px;
+
+                background: rgb(215, 215, 215);
+                background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+                background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+            }
+            .slide{
+                width: 1000px;
+                height: 750px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -500px;
+                margin-top: -375px;
+                line-height: 50px;
+                border-radius: 10px;
+                background-color: white;
+                border: 1px solid rgba(0, 0, 0, .3);
+                border-radius: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+                color: #666;
+                text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+                letter-spacing: -1px;
+                word-break: break-all;
+            }
+            .syntaxhighlighter{
+                font-size: 20px !important;
+            }
+        </style>
+        <script type="text/javascript" src="shCore.js"></script>
+        <script type="text/javascript" src="shBrushXml.js"></script>
+        <script type="text/javascript" src="shBrushJScript.js"></script>
+        <script type="text/javascript">
+            SyntaxHighlighter.defaults['toolbar'] = false;
+            var $ = function(id){
+                return document.getElementById(id);
+            };
+            var addEvent = (function() {
+                if(document.addEventListener) {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.addEventListener(type, fn, false);
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                } else {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.attachEvent('on' + type, function() {
+                                return fn.call(el, window.event);
+                            });
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                }
+            })();
+
+        </script>
+    </head>
+    <body style="overflow: hidden">
+        <div class="slide">
+            <pre class="brush: js;" id="www" name="www">
+                function constructMultipartFormData(binaryData, boundary, otherParameters) {
+                    var commonHeader = 'Content-Disposition: form-data; ';
+                    var data = [];
+                    for (var key in otherParameters) {
+                        data.push('--' + boundary + '\r\n');
+                        data.push(commonHeader);
+                        data.push('name="' + key + '"\r\n\r\n' + otherParameters[key] + '\r\n');
+                    }
+
+                    data.push('--' + boundary + '\r\n');
+                    data.push(commonHeader);
+
+                    data.push('name="' + (binaryData.name || 'binaryfilename') + '"; ');
+                    data.push('filename=\"' + binaryData.value + '\"\r\n');
+                    data.push('Content-type: ' + binaryData.type + '\r\n\r\n');
+                    data.push(binaryData.data + '\r\n');
+
+                    data.push('--' + boundary + '--\r\n');
+                    return data.join('');
+                }
+            </pre>
+            <script type="text/javascript">
+                SyntaxHighlighter.highlight('www');
+            </script>
+        </div>
+    </body>
+</html>

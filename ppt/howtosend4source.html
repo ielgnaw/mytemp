@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+    <head>
+        <title>pptx-new</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link type="text/css" rel="stylesheet" href="shCoreDefault.css"/>
+        <style type="text/css" media="screen">
+            body {
+                line-height: 1;
+                overflow:hidden;
+
+                font: 14px/1.5em "Microsoft Yahei",Arial,sans-serif;
+                min-height: 740px;
+
+                background: rgb(215, 215, 215);
+                background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+                background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+            }
+            .slide{
+                width: 1000px;
+                height: 750px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -500px;
+                margin-top: -375px;
+                line-height: 50px;
+                border-radius: 10px;
+                background-color: white;
+                border: 1px solid rgba(0, 0, 0, .3);
+                border-radius: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+                color: #666;
+                text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+                letter-spacing: -1px;
+                word-break: break-all;
+            }
+            .syntaxhighlighter{
+                font-size: 20px !important;
+            }
+
+            .title{
+                /*margin: 150px auto;*/
+                text-align: center;
+                /*line-height: 180%;*/
+                text-shadow: -1px -1px 2px rgba(100, 100, 100, 0.9);
+            }
+
+            .title h1 {
+                font-size: 45px;
+                line-height: 2em;
+            }
+
+            .title h3{
+                font-size: 20px;
+                line-height: 2em;
+            }
+
+            .title h2 {
+                font-size: 32px;
+                line-height: 2em;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+                padding: 0 0.1em;
+                background: rgba(215,215,215,1);
+                text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
+                border-radius: 0.2em;
+
+                -webkit-transition: 0.5s;
+                -moz-transition:    0.5s;
+                -ms-transition:     0.5s;
+                -o-transition:      0.5s;
+                transition:         0.5s;
+            }
+
+            a:hover,
+            a:focus {
+                background: rgba(255,255,255,1);
+                text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
+            }
+        </style>
+        <script type="text/javascript" src="shCore.js"></script>
+        <script type="text/javascript" src="shBrushXml.js"></script>
+        <script type="text/javascript" src="shBrushJScript.js"></script>
+        <script type="text/javascript">
+            SyntaxHighlighter.defaults['toolbar'] = false;
+            var $ = function(id){
+                return document.getElementById(id);
+            };
+            var addEvent = (function() {
+                if(document.addEventListener) {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.addEventListener(type, fn, false);
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                } else {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.attachEvent('on' + type, function() {
+                                return fn.call(el, window.event);
+                            });
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                }
+            })();
+
+        </script>
+    </head>
+    <body style="overflow: hidden">
+        <div class="slide">
+            <pre class="brush: js;" id="www" name="www">
+                getImageData: function(str){
+                    var tmp = str.split(',')[0];
+                    if (tmp.indexOf('data:image/png;base64') < 0 &&
+                    tmp.indexOf('data:image/jpg;base64') < 0 &&
+                    tmp.indexOf('data:image/jpeg;base64') < 0 &&
+                    tmp.indexOf('data:image/bmp;base64') < 0 &&
+                    tmp.indexOf('data:image/gif;base64') < 0) {
+                        return;
+                    }
+                    return atob(str.split(',')[1]);
+                }
+            </pre>
+            <script type="text/javascript">
+                SyntaxHighlighter.highlight('www');
+            </script>
+            <section class="title">
+                <h1>window.atob 参考资料</h1>
+                <h2><a href="https://developer.mozilla.org/zh-CN/docs/DOM/window.atob" target="_blank">https://developer.mozilla.org/zh-CN/docs/DOM/window.atob</a></h2>
+            </section>
+        </div>
+    </body>
+</html>

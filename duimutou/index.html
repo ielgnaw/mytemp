@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <title>堆木头</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="full-screen" content="true"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <link rel="stylesheet" href="./asset/css/index.css">
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <section class="main-content">
+            <div class="guide-tip">
+                <div class="title">堆木头</div>
+                <div class="content"><div class="icon"></div>当木头移动到木头堆正上方时，点击屏幕放木头，尽可能的对齐木头。完整对齐木头，得分会更高且会累加一次连击数。</div>
+                <div class="start"></div>
+            </div>
+            <div class="game-content">
+                <div class="score-panel">
+                    <div class="left">得分：<span>0</span></div>
+                    <div class="middle">等级：<span>1</span></div>
+                    <div class="right">连击：<span>0</span></div>
+                    <span class="fps"></span>
+                </div>
+                <div class="branch-container">
+                    <div class="branch-wrapper go-down">
+                        <div class="branch-item base" data-left="72" data-right="342">
+                            <div class="branch-left branch-left4"></div>
+                            <div class="branch-middle branch-middle4"></div>
+                            <div class="branch-right branch-right4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="end">
+                <div class="title">Game Over</div>
+                <div class="info"></div>
+                <div class="play-again">再玩一次</div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+        // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+        // requestAnimationFrame polyfill by Erik Möller
+        // fixes from Paul Irish and Tino Zijdel
+        (function () {
+            var lastTime = 0;
+            var vendors = ['ms', 'moz', 'webkit', 'o'];
+            for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+                window.cancelAnimationFrame
+                    = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+            }
+
+            if (!window.requestAnimationFrame) {
+                window.requestAnimationFrame = function (callback, element) {
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                    var id = setTimeout(function () {
+                        callback(currTime + timeToCall);
+                    }, timeToCall);
+                    lastTime = currTime + timeToCall;
+                    return id;
+                };
+            }
+
+            if (!window.cancelAnimationFrame) {
+                window.cancelAnimationFrame = function (id) {
+                    clearTimeout(id);
+                };
+            }
+        })();
+
+        var globalData = (function () {
+            var width = document.documentElement.clientWidth;
+            var height = document.documentElement.clientHeight;
+
+            var section = document.querySelector('section');
+            section.style.width = width + 'px';
+            section.style.height = height + 'px';
+
+            function transitionEndEvent() {
+                var t;
+                var el = document.createElement('fakeelement');
+                var transitions = {
+                  'transition':'transitionend',
+                  'OTransition':'oTransitionEnd',
+                  'MozTransition':'transitionend',
+                  'WebkitTransition':'webkitTransitionEnd'
+                }
+
+                for (t in transitions) {
+                    if (el.style[t] !== undefined) {
+                        return transitions[t];
+                    }
+                }
+            }
+
+            var supportTouch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch;
+
+            return {
+                width: width,
+                height: height,
+                touchStartEvent: (supportTouch ? 'touchstart' : 'mousedown'),
+                touchMoveEvent: (supportTouch ? 'touchmove' : 'mousemove'),
+                touchEndEvent: (supportTouch ? 'touchend' : 'mouseup'),
+                transitionEndEvent: transitionEndEvent()
+            }
+        })();
+
+        require.config({
+        'baseUrl': 'asset',
+        'paths': {},
+        'packages': [{
+                'name': 'est',
+                'location': '../dep/est/2.0.4/asset',
+                'main': 'lib/index'
+            }]
+    });
+        require(['index'], function (index) {
+            index.init();
+        });
+    </script>
+</body>
+</html>

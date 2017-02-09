@@ -1,0 +1,79 @@
+{
+    "bg": {
+        "sx": 0,
+        "sy": 0,
+        "cols": 5,
+        "rows": 1,
+        "total": 5,
+        "tileW": 320,
+        "tileH": 416,
+        "offsetX": 0,
+        "offsetY": 0
+    },
+    "normalRun": {
+        "sx": 0,
+        "sy": 180,
+        "cols": 6,
+        "rows": 1,
+        "total": 6,
+        "tileW": 48,
+        "tileH": 120,
+        "offsetX": 0,
+        "offsetY": 0
+    },
+    "dangerRun": {
+        "sx": 288,
+        "sy": 180,
+        "cols": 12,
+        "rows": 1,
+        "total": 6,
+        "tileW": 55,
+        "tileH": 120,
+        "offsetX": 0,
+        "offsetY": 0
+    },
+    "tripRun": {
+        "sx": 618,
+        "sy": 200,
+        "cols": 13,
+        "rows": 1,
+        "total": 1,
+        "tileW": 55,
+        "tileH": 100,
+        "offsetX": 0,
+        "offsetY": 0
+    },
+    "bear": {
+        "sx": 0,
+        "sy": 0,
+        "cols": 5,
+        "rows": 1,
+        "total": 5,
+        "tileW": 135,
+        "tileH": 170,
+        "offsetX": 0,
+        "offsetY": 0
+    },
+    "pinecone": {
+        "sx": 0,
+        "sy": 370,
+        "cols": 6,
+        "rows": 1,
+        "total": 6,
+        "tileW": 56,
+        "tileH": 55,
+        "offsetX": 0,
+        "offsetY": 0
+    },
+    "stone": {
+        "sx": 0,
+        "sy": 310,
+        "cols": 6,
+        "rows": 1,
+        "total": 6,
+        "tileW": 65,
+        "tileH": 55,
+        "offsetX": 0,
+        "offsetY": 0
+    }
+}

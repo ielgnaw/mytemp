@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+    <head>
+        <title>pptx-new</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link type="text/css" rel="stylesheet" href="shCoreDefault.css"/>
+        <style type="text/css" media="screen">
+            body {
+                line-height: 1;
+                overflow:hidden;
+
+                font: 14px/1.5em "Microsoft Yahei",Arial,sans-serif;
+                min-height: 740px;
+
+                background: rgb(215, 215, 215);
+                background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+                background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+                background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+            }
+            .slide{
+                width: 1000px;
+                height: 750px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -500px;
+                margin-top: -375px;
+                line-height: 50px;
+                border-radius: 10px;
+                background-color: white;
+                border: 1px solid rgba(0, 0, 0, .3);
+                border-radius: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+                color: #666;
+                text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+                letter-spacing: -1px;
+                word-break: break-all;
+            }
+            .syntaxhighlighter{
+                font-size: 20px !important;
+            }
+        </style>
+        <script type="text/javascript" src="shCore.js"></script>
+        <script type="text/javascript" src="shBrushXml.js"></script>
+        <script type="text/javascript" src="shBrushJScript.js"></script>
+        <script type="text/javascript">
+            SyntaxHighlighter.defaults['toolbar'] = false;
+            var $ = function(id){
+                return document.getElementById(id);
+            };
+            var addEvent = (function() {
+                if(document.addEventListener) {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.addEventListener(type, fn, false);
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                } else {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.attachEvent('on' + type, function() {
+                                return fn.call(el, window.event);
+                            });
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                }
+            })();
+
+        </script>
+    </head>
+    <body style="overflow: hidden">
+        <div class="slide">
+            <pre class="brush: js;" id="www" name="www">
+                function constructBlobData(dataString, contentType) {
+                    var bb;
+                    if (window.BlobBuilder) {
+                        bb = new BlobBuilder();
+                    } else if (window.WebKitBlobBuilder) {
+                        bb = new WebKitBlobBuilder();
+                    }
+                    var len = dataString.length;
+                    var data = new Uint8Array(len);
+                    for (var i = 0; i < len; i++) {
+                        data[i] = dataString.charCodeAt(i);
+                    }
+                    if(bb){
+                        bb.append(data.buffer);
+                        return bb.getBlob(contentType);
+                    }else{
+                        bb = new Blob([data]);
+                        return bb;
+                    }
+                }
+            </pre>
+            <script type="text/javascript">
+                SyntaxHighlighter.highlight('www');
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,475 @@
+<!doctype html>
+<html>
+    <head>
+        <title>CWSIR</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link type="text/css" rel="stylesheet" href="animation.css">
+        <link type="text/css" rel="stylesheet" href="shCoreDefault.css"/>
+        <link type="text/css" rel="stylesheet" href="pptx.css">
+        <style type="text/css" media="screen">
+            .breath {
+                opacity:0.1;
+                -webkit-animation-name: breath;
+                -webkit-animation-duration: 5s;
+                -webkit-animation-timing-function: ease-in-out;
+                -webkit-animation-iteration-count: infinite;
+            }
+
+            @-webkit-keyframes 'breath' {
+                from {
+                    opacity:0.1;
+                }
+                50% {
+                    opacity:1;
+                }
+                to {
+                    opacity:0.1;
+                }
+            }
+        </style>
+
+        <script type="text/javascript" src="shCore.js"></script>
+        <script type="text/javascript" src="shBrushXml.js"></script>
+        <script type="text/javascript" src="shBrushJScript.js"></script>
+        <script type="text/javascript">
+            SyntaxHighlighter.defaults['toolbar'] = false;
+            // SyntaxHighlighter.defaults['useScriptTags'] = false;
+            // SyntaxHighlighter.defaults['highlight'] = 5;
+
+            var $ = function(id){
+                return document.getElementById(id);
+            };
+            var addEvent = (function() {
+                if(document.addEventListener) {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.addEventListener(type, fn, false);
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                } else {
+                    return function(el, type, fn) {
+                        if(el && el.nodeName || el === window) {
+                            el.attachEvent('on' + type, function() {
+                                return fn.call(el, window.event);
+                            });
+                        } else if (el && el.length) {
+                            for(var i = 0; i < el.length; i++) {
+                                addEvent(el[i], type, fn);
+                            }
+                        }
+                    };
+                }
+            })();
+
+        </script>
+    </head>
+    <body style="overflow: hidden">
+
+        <div class="loadContainer" id="loadContainer">
+            <div id="loadProcess" style="width: 0%;">
+                <b id="loadPercent"></b>
+            </div>
+        </div>
+
+        <div id="pptx">
+            <div id="start" animation-type="fade" class="slide" need-build="needBuild">
+                <section class="title">
+                    <h1>CWSIR及其所使用的HTML5技术</h1>
+                    <h2 style="position: absolute;top: 480px;left: 700px;">王磊</h2>
+                    <h2 style="position: absolute;top: 550px;left: 700px;"><a href="http://weibo.com/justjava" target="_blank">@ 蓝色的情缘</a></h2>
+                </section>
+            </div>
+
+            <div id="subject" animation-type="flipX" class="slide" need-build="needBuild">
+                <section class="title">
+                    <h1 style="position: absolute;top: 65px;left: 450px;">主&nbsp;题</h1>
+                    <div style="font-size: 40px;top: 250px;left: 365px;" animation-type="bounceLeft" build class="build">CWSIR简单介绍</div>
+                    <div style="font-size: 40px;top: 400px;left: 310px;" animation-type="bounceLeft" build class="build">CWSIR中使用到的技术</div>
+                </section>
+            </div>
+
+            <div id="intro" animation-type="flipY" class="slide" need-build="needBuild">
+                <div style="font-size: 45px;position: absolute;top: 58px;left: 365px;">CWSIR是什么</div>
+                <div style="font-size: 45px;line-height: 2em; top: 175px; left: 80px;" animation-type="fadeLeft" build class="build">
+                    <img src="imgsnew/social.png">
+                </div>
+                <div style="font-size: 45px;top: 475px;left: 600px;" animation-type="fadeRight" build class="build">
+                    <img src="imgsnew/baidu.png" style="-webkit-transform: rotate(-16deg);top: -240px;position: absolute;left: 77px;">
+                    <img src="imgsnew/soso.jpg" style="-webkit-transform: rotate(34deg);top: -180px;position: absolute;left: -25px;">
+                    <img src="imgsnew/google.png" style="position: absolute; top: -100px; left: -10px;">
+                </div>
+
+                <div style="height: 445px;width: 15px;position: absolute;background-color: #666;left: 500px;top: 150px;" animation-type="fade" build class="build" disappear-animation-type="fadeOut"></div>
+                <div animation-type="fade" build class="build">
+                    <div style="position:absolute;top: 150px;left: 500px;height: 190px;width: 15px;background-color: #666;"></div>
+                    <div style="font-size: 35px;position: absolute;top: 342px;left: 453px;width: 115px;">CWSIR</div>
+                    <div style="position: absolute;top: 395px;left: 500px;height: 200px;width: 15px;background-color: #666;"></div>
+                </div>
+            </div>
+
+            <div id="cwsirprinciple" animation-type="bounce" class="slide" need-build="needBuild">
+                <div style="font-size: 45px;position: absolute;top: 55px;left: 357px;">CWSIR基本原理</div>
+                <div style="position: absolute;top: 165px;left: 110px;padding: 20px;">
+                    <img src="imgsnew/cwsirprinciple.png" style="width: 800px;height: 460px;" >
+                </div>
+            </div>
+
+            <div id="website" animation-type="bounceUp" class="slide">
+                <section class="title">
+                    <h1>网站</h1>
+                    <h2 style=""><a href="http://cwsir.sinaapp.com" target="_blank">http://cwsir.sinaapp.com</a></h2>
+                    <h3>&nbsp;</h3>
+                    <h1>微博</h1>
+                    <h2 style=""><a href="http://weibo.com/cwsir" target="_blank">http://weibo.com/cwsir</a></h2>
+                </section>
+            </div>
+
+            <div id="chromeextension" animation-type="bounceDown" class="slide" need-build="needBuild">
+                <div style="font-size: 45px;line-height: 2em;position: absolute;top: 55px;left: 325px;">Chrome插件原理</div>
+                <div style="position: absolute;top: 165px;left: 110px;padding: 20px;">
+                    <img src="imgsnew/chromeextension.png" style="width: 750px;height: 450px;" >
+                </div>
+            </div>
+
+            <div id="chromeextensionreference" animation-type="bounceLeft" class="slide" need-build="needBuild">
+                <section class="title">
+                    <h1>参考资料</h1>
+                    <h2><a href="http://open.chrome.360.cn/html/dev_doc.html" target="_blank">http://open.chrome.360.cn/html/dev_doc.html</a></h2>
+                    <h2><a href="http://developer.chrome.com/extensions/docs.html" target="_blank">http://developer.chrome.com/extensions/index.html</a></h2>
+                    <h2><a href="http://developer.chrome.com/extensions/samples.html" target="_blank">http://developer.chrome.com/extensions/samples.html</a></h2>
+                    <h2><a href="https://sites.google.com/site/crxdoczh/" target="_blank">https://sites.google.com/site/crxdoczh/</a></h2>
+                </section>
+            </div>
+
+            <div id="html5intro" animation-type="bounceRight" class="slide" need-build="needBuild">
+                <div style="font-size: 45px;position: absolute;top: 58px;left: 233px;">CWSIR中用到的HTML5技术</div>
+                <div style="font-size: 45px;line-height: 2em; top: 150px; left: 360px;" animation-type="bounceLeft" build class="build">Storage</div>
+                <div style="font-size: 45px;line-height: 2em; top: 240px; left: 360px;" animation-type="bounceLeft" build class="build">Drag & Drop</div>
+                <div style="font-size: 45px;line-height: 2em; top: 330px; left: 360px;" animation-type="bounceLeft" build class="build">HTML5 File API</div>
+                <div style="font-size: 45px;line-height: 2em; top: 420px; left: 360px;" animation-type="bounceLeft" build class="build">Canvas</div>
+            </div>
+
+            <div id="html5storage" animation-type="roll" class="slide" need-build="needBuild">
+                <section class="title">
+                    <h1 style="position: absolute;top: 65px;left: 422px;">Storage</h1>
+                    <div style="font-size: 40px;top: 250px;left: 382px;" animation-type="bounceLeft" build class="build">LocalStorage</div>
+                    <div style="font-size: 40px;top: 400px;left: 382px;" animation-type="bounceLeft" build class="build">SessionStorage</div>
+                </section>
+            </div>
+
+            <div id="draganddropevent" animation-type="fade" class="slide" need-build="needBuild">
+                <!-- <div style="font-size: 45px;line-height: 2em;position: absolute;top: 45px;left: 303px;">Drag & Drop event</div> -->
+                <div style="font-size: 45px;line-height: 2em;position: absolute;top: 45px;left: 360px;">Drag & Drop</div>
+                <div style="position: absolute; top: 300px;left: 100px;">
+                    <img src="imgsnew/dragdropevent1.png" style="width:810px; height: 100px;" >
+                </div>
+
+                <div animation-type="fadeLeft" build class="build">
+                    <div style="position: absolute;top: 327px;left: 150px;">
+                        <img src="imgsnew/dragdropevent2.png" style="width:45px; height: 45px;" >
+                    </div>
+                    <div style="color: #666;position: absolute;left: 95px;top: 280px;text-align: center;border-radius: 5px;font-size: 30px;width: 150px;">dragstart</div>
+                </div>
+                <div animation-type="fadeUp" build class="build" disappear-animation-type="fadeUpOut">
+                    <div style="color: #666;position: absolute;left: 173px;top: 349px;text-align: center;line-height: 142px;font-size: 104px;-webkit-transform: rotate(-30deg);">↑</div>
+                    <div style="color: #666;position: absolute;left: 96px;top: 459px;text-align: center;font-size: 30px;width: 300px;">元素开始拖拽时触发，事件对象是被拖拽元素</div>
+                </div>
+
+                <div animation-type="fadeLeft" build class="build">
+                    <div style="position: absolute;top: 327px;left: 270px;">
+                        <img src="imgsnew/dragdropevent2.png" style="width:45px; height: 45px;" >
+                    </div>
+                    <div style="color: #666;position: absolute;left: 219px;top: 363px;text-align: center;border-radius: 5px;font-size: 30px;width: 150px;">dragenter</div>
+                </div>
+                <div animation-type="fadeDown" build class="build" disappear-animation-type="fadeDownOut">
+                    <div style="color: #666;position: absolute;left: 297px;top: 211px;text-align: center;line-height: 142px;font-size: 104px;-webkit-transform: rotate(210deg);">↑</div>
+                    <div style="color: #666;position: absolute;left: 181px;top: 148px;text-align: center;font-size: 30px;width: 350px;">拖拽元素进入目标元素时触发，事件对象是目标元素</div>
+                </div>
+
+                <div animation-type="fadeLeft" build class="build">
+                    <div style="position: absolute;top: 327px;left: 390px;">
+                        <img src="imgsnew/dragdropevent2.png" style="width:45px; height: 45px;" >
+                    </div>
+                    <div style="color: #666;position: absolute;left: 333px;top: 280px;text-align: center;border-radius: 5px;font-size: 30px;width: 150px;">dragover</div>
+                </div>
+                <div animation-type="fadeUp" build class="build" disappear-animation-type="fadeUpOut">
+                    <div style="color: #666;position: absolute;left: 413px;top: 349px;text-align: center;line-height: 142px;font-size: 104px;-webkit-transform: rotate(-30deg);">↑</div>
+                    <div style="color: #666;position: absolute;left: 369px;top: 456px;text-align: center;font-size: 30px;width: 262px;">拖拽元素在目标元素上移动时触发，事件对象是目标元素</div>
+                </div>
+
+                <div animation-type="fadeLeft" build class="build">
+                    <div style="position: absolute;top: 327px;left: 510px;">
+                        <img src="imgsnew/dragdropevent2.png" style="width:45px; height: 45px;" >
+                    </div>
+                    <div style="color: #666;position: absolute;left: 462px;top: 365px;text-align: center;border-radius: 5px;font-size: 30px;width: 150px;">dragleave</div>
+                </div>
+                <div animation-type="fadeDown" build class="build" disappear-animation-type="fadeDownOut">
+                    <div style="color: #666;position: absolute;left: 534px;top: 211px;text-align: center;line-height: 142px;font-size: 104px;-webkit-transform: rotate(210deg);">↑</div>
+                    <div style="color: #666;position: absolute;left: 410px;top: 148px;text-align: center;font-size: 30px;width: 350px;">拖拽元素离开目标元素时触发，事件对象是目标元素</div>
+                </div>
+
+                <div animation-type="fadeLeft" build class="build">
+                    <div style="position: absolute;top: 327px;left: 630px;">
+                        <img src="imgsnew/dragdropevent2.png" style="width:45px; height: 45px;" >
+                    </div>
+                    <div style="color: #666;position: absolute;left: 576px;top: 280px;text-align: center;border-radius: 5px;font-size: 30px;width: 150px;">drop</div>
+                </div>
+                <div animation-type="fadeUp" build class="build" disappear-animation-type="fadeUpOut">
+                    <div style="color: #666;position: absolute;left: 656px;top: 349px;text-align: center;line-height: 142px;font-size: 104px;-webkit-transform: rotate(-30deg);">↑</div>
+                    <div style="color: #666;position: absolute;left: 571px;top: 456px;text-align: center;font-size: 30px;width: 262px;">被拖拽元素放在目标元素内时触发，事件对象是目标元素</div>
+                </div>
+
+
+                <div animation-type="fadeLeft" build class="build">
+                    <div style="position: absolute;top: 327px;left: 750px;">
+                        <img src="imgsnew/dragdropevent2.png" style="width:45px; height: 45px;" >
+                    </div>
+                    <div style="color: #666;position: absolute;left: 696px;top: 365px;text-align: center;border-radius: 5px;font-size: 30px;width: 150px;">dragend</div>
+                </div>
+                <div animation-type="fadeDown" build class="build" disappear-animation-type="fadeDownOut">
+                    <div style="color: #666;position: absolute;left: 772px;top: 211px;text-align: center;line-height: 142px;font-size: 104px;-webkit-transform: rotate(210deg);">↑</div>
+                    <div style="color: #666;position: absolute;left: 587px;top: 143px;text-align: center;font-size: 30px;width: 385px;">drop之后触发，即拖拽完毕时触发，事件对象是被拖拽元素</div>
+                </div>
+            </div>
+
+            <div id="draganddrop" animation-type="flipX" class="slide" need-build="needBuild">
+                <div style="font-size: 45px;line-height: 2em;position: absolute;top: 45px;left: 360px;">Drag & Drop</div>
+                <div style="position: absolute;top: 135px;left: 100px;width: 810px;">
+                    <pre class="brush: js;" id="www" name="www">
+                        addEvent($('dragMe'), 'dragstart', function(e){
+                            e.dataTransfer.setData('src', e.target.getAttribute('src'));
+                        });
+
+                        addEvent($('dropTarget'), 'drop', function(e){
+                            var src = e.dataTransfer.getData('src');
+                            $('dropTarget').innerHTML = '&lt;img src=' + src + '&gt;';
+                        });
+
+                        addEvent($('dropTarget'), 'dragover', function(e){
+                            e.stopPropagation();
+                            e.preventDefault();
+                        });
+                    </pre>
+                    <script type="text/javascript">
+                        SyntaxHighlighter.highlight('www');
+                    </script>
+                    <div style="height: 5px"></div>
+                    <pre class="brush: xml;" id="draganddrophtmlHighlight" name="draganddrophtmlHighlight">
+                        <img src="imgsnew/headImg.jpg" id="dragMe" draggable="true">
+
+                        <div class="dropTarget" id="dropTarget"></div>
+                    </pre>
+                    <script type="text/javascript">
+                        SyntaxHighlighter.highlight('draganddrophtmlHighlight');
+                    </script>
+                </div>
+                <div style="position: absolute;top: 580px;left: 455px;">
+                    <input type="button" value="运&nbsp;行" id="go1" style="width: 70px;">
+                    <script type="text/javascript">
+                        $('go1').onclick = function(){
+                            var newWin = window.open('dragdrop.html', '_blank', '');
+                            newWin.opener = null;
+                            newWin.document.close();
+                        };
+                    </script>
+                </div>
+            </div>
+
+            <div id="dataTransfer" animation-type="flipY" class="slide">
+                <div style="font-size: 45px;line-height: 2em;position: absolute;top: 45px;left: 360px;">dataTransfer</div>
+                <div style="position: absolute;top: 150px;left: 100px;width: 810px;">
+                    <pre class="brush: js;" id="dataTransferHighlight" name="dataTransferHighlight">
+                        interface DataTransfer{
+                            attribute DOMString dropEffect;
+                            attribute DOMString effectAllowed;
+
+                            readonly attribute DataTransferItems items;
+
+                            void setDragImage(in Element image, in long x, in long y);
+                            void addElement(in Element element);
+
+                            /* old interface */
+                            readonly attribute DOMStingList types;
+                            DOMSting getData(in DOMString format);
+                            void setData(in DOMString format, in DOMString data);
+                            void clearData(in optional DOMString format);
+                            readonly attribute FileList files;
+                        }
+                    </pre>
+                    <script type="text/javascript">
+                        SyntaxHighlighter.highlight('dataTransferHighlight');
+                    </script>
+                </div>
+            </div>
+
+            <div id="html5file" animation-type="bounce" class="slide" need-build="needBuild">
+                <div style="font-size: 45px;position: absolute;top: 42px;left: 380px;">HTML5 File</div>
+                <div style="position: absolute;top: 105px;left: 100px;width: 825px;">
+                    <pre class="brush: js;" id="html5fileHighlight" name="html5fileHighlight">
+                        if (evt.dataTransfer.files.length) {
+                            var files = evt.dataTransfer.files;
+                            var src, fileName;
+                            for (var i = 0, f; f = files[i]; i++) {
+                                var t = f.type ? f.type : 'n/a',
+                                    reader, isImg = isImage(t), img,
+                                    looks = function(img){
+                                        list.innerHTML = img;
+                                    };
+                                if (isImg) {
+                                    reader = new FileReader();
+                                    reader.onload = (function(theFile){
+                                        return function(e){
+                                            src = e.target.result, fileName = theFile.name;
+                                            img = '&lt;img src="'+ src +'" title="'+ fileName +'"&gt;';
+                                            looks(img);
+                                        };
+                                    })(f)
+                                    reader.readAsDataURL(f);
+                                }else {
+                                    img = '"传进来的不是图片！';
+                                    looks(f, img);
+                                }
+                            }
+                        }
+                    </pre>
+                    <script type="text/javascript">
+                        SyntaxHighlighter.highlight('html5fileHighlight');
+                    </script>
+                </div>
+                <div style="position: absolute;top: 660px;left: 455px;">
+                    <input type="button" value="运&nbsp;行" id="go2" style="width: 70px;">
+                    <script type="text/javascript">
+                        $('go2').onclick = function(){
+                            var newWin = window.open('dragdrop2.html', '_blank', '');
+                            newWin.opener = null;
+                            newWin.document.close();
+                        };
+                    </script>
+                </div>
+            </div>
+
+            <div id="howtosend" animation-type="bounceUp" class="slide">
+                <div style="position: absolute;top: 150px;left: 80px;">
+                    <img src="imgsnew/howtosend1.png" style="width:850px; height: 150px;" >
+                </div>
+                <div style="position: absolute;top: 350px;left: 397px;">
+                    <img src="imgsnew/howtosend2.jpg" style="width:150px; height: 200px;" >
+                </div>
+            </div>
+
+            <div id="howtosendprinciple" animation-type="bounceUp" class="slide" need-build="needBuild">
+                <!-- <div style="position: absolute;top: 115px;left: 112px;">
+                    <img src="imgsnew/howtosendall.png" style="width: 760px;height: 500px;" >
+                </div> -->
+
+                <div animation-type="fade" build class="build">
+                    <img id="howtosend31" src="imgsnew/howtosend3_1.png" style="position: absolute;top: 55px;left: 142px;width: 280px;height: 60px;cursor: pointer;" >
+                    <img id="howtosend32" src="imgsnew/howtosend3_2.png" style="position: absolute;top: 125px;left: 142px;width: 280px;height: 60px;" >
+                </div>
+
+                <div animation-type="fade" build class="build">
+                    <div style="position: absolute;top: 211px;left: 248px;font-size: 120px;-webkit-transform: rotate(180deg);">↑</div>
+                    <div style="position: absolute;top: 205px;left: 291px;font-size: 42px;width: 145px;">base64</div>
+                </div>
+
+                <div animation-type="fade" build class="build" style="position: absolute;top: 290px;left: 140px;">
+                    <img id="howtosend4" src="imgsnew/howtosend4.png" style="width: 290px;height: 90px;cursor: pointer;" >
+                </div>
+                <div animation-type="fade" build class="build">
+                    <div style="position: absolute;top: 405px;left: 248px;font-size: 120px;-webkit-transform: rotate(180deg);">↑</div>
+                    <div style="position: absolute;top: 395px;left: 291px;font-size: 42px;width: 145px;">binary</div>
+                </div>
+
+                <div animation-type="fade" build class="build" >
+                    <img src="imgsnew/howtosend5.png" style="position: absolute;top: 486px;left: 214px;width: 120px;height: 70px;" >
+                    <img src="imgsnew/howtosend6.png" style="position: absolute;top: 586px;left: 214px;width: 120px;height: 70px;" >
+                </div>
+
+                <div animation-type="fade" build class="build">
+                    <div style="position: absolute;top: 542px;left: 445px;font-size: 155px;-webkit-transform: rotate(90deg);">↑</div>
+                </div>
+
+                <div animation-type="fade" build class="build" >
+                    <img id="howtosend9" src="imgsnew/howtosend9.png" style="cursor: pointer;position: absolute;top: 515px;left: 580px;width: 298px;height: 115px;" >
+                </div>
+
+                <div animation-type="fade" build class="build">
+                    <div style="position: absolute;top: 430px;left: 695px;font-size: 120px;">↑</div>
+                    <div style="position: absolute;top: 432px;left: 740px;font-size: 42px;width: 145px;">string</div>
+                </div>
+
+                <div animation-type="fade" build class="build" >
+                    <img id="howtosend8" src="imgsnew/howtosend8.png" style="cursor: pointer;position: absolute;top: 292px;left: 580px;width: 298px;height: 115px;" >
+                </div>
+
+                <div animation-type="fade" build class="build">
+                    <div style="position: absolute;top: 208px;left: 695px;font-size: 120px;">↑</div>
+                    <div style="position: absolute;top: 215px;left: 740px;font-size: 42px;width: 145px;">blob</div>
+                </div>
+
+                <div>
+                    <img src="imgsnew/howtosend7.png" style="position: absolute;top: 104px;left: 597px;width: 250px;height: 80px;" >
+                </div>
+                <script type="text/javascript">
+                    addEvent($('howtosend31'), 'click', function(){
+                        var newWin = window.open('howtosend31source.html', '_blank', '');
+                        newWin.opener = null;
+                        newWin.document.close();
+                    });
+
+                    addEvent($('howtosend4'), 'click', function(){
+                        var newWin = window.open('howtosend4source.html', '_blank', '');
+                        newWin.opener = null;
+                        newWin.document.close();
+                    });
+
+                    addEvent($('howtosend9'), 'click', function(){
+                        var newWin = window.open('howtosend9source.html', '_blank', '');
+                        newWin.opener = null;
+                        newWin.document.close();
+                    });
+
+                    addEvent($('howtosend8'), 'click', function(){
+                        var newWin = window.open('howtosend8source.html', '_blank', '');
+                        newWin.opener = null;
+                        newWin.document.close();
+                    });
+                </script>
+            </div>
+
+            <div id="xhr2reference" animation-type="bounceLeft" class="slide" need-build="needBuild">
+                <section class="title">
+                    <h1>XMLHttpRequest2 参考资料</h1>
+                    <h2>&nbsp;</h2>
+                    <h2><a href="http://www.html5rocks.com/en/tutorials/file/xhr2/" target="_blank">http://www.html5rocks.com/en/tutorials/file/xhr2/</a></h2>
+                    <h2><a href="https://dvcs.w3.org/hg/xhr/raw-file/tip/Overview.html" target="_blank">https://dvcs.w3.org/hg/xhr/raw-file/tip/Overview.html</a></h2>
+                </section>
+            </div>
+
+            <div id="qa" animation-type="bounceDown" class="slide">
+                <div style="font-size: 100px;position: absolute;top: 300px;left: 382px;">Q&A</div>
+            </div>
+
+            <!-- <div id="thanks" animation-type="bounceLeft" class="slide">
+                <div style="font-size: 100px;position: absolute;top: 280px;left: 255px;">Thank You</div>
+            </div> -->
+
+            <div id="thanks" animation-type="bounceLeft" class="slide">
+                <div style="position: absolute;top: 240px;left: 290px;">
+                    <div class="breath">
+                        <img src="imgsnew/weibo.jpg" style="width: 360px;height: 120px;" >
+                        <div style="height: 15px;"></div>
+                        <div style="font-size: 42px;width: 500px;font-style: italic;">以微博之力&nbsp;&nbsp;让世界更美！</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <script type="text/javascript" src="pptx.js"></script>
+    </body>
+</html>
