@@ -1,3 +1,4 @@
+console.log(12321);
 var now = function () {
     var _ref;
     return (
